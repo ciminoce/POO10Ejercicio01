@@ -63,5 +63,28 @@ namespace POO10Ejercicio01.Datos
         {
             return ListaPuntos;
         }
+
+        public void Agregar(Punto punto)
+        {
+            ListaPuntos.Add(punto);
+            EstaModificado = true;
+        }
+
+        public void Borrar(Punto punto)
+        {
+            ListaPuntos.Remove(punto);
+            EstaModificado = true;
+        }
+
+        public bool ExistePunto(Punto punto)
+        {
+            return ListaPuntos.Contains(punto);
+        }
+
+        public void Modificar(Punto punto, Punto puntoAuxiliar)
+        {
+            var iIndex = ListaPuntos.IndexOf(punto);
+            ListaPuntos[iIndex] = puntoAuxiliar;
+        }
     }
 }
