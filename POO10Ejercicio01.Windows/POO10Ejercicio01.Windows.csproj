@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\POO10Ejercicio01.Datos\POO10Ejercicio01.Datos.csproj" />
+    <ProjectReference Include="..\POO10Ejercicio01.Entidades\POO10Ejercicio01.Entidades.csproj" />
+  </ItemGroup>
+
+</Project>
