@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using POO10Ejercicio01.Entidades;
+using POO10Ejercicio01.Entidades.Enums;
 
 namespace POO10Ejercicio01.Datos
 {
@@ -85,6 +87,30 @@ namespace POO10Ejercicio01.Datos
         {
             var iIndex = ListaPuntos.IndexOf(punto);
             ListaPuntos[iIndex] = puntoAuxiliar;
+        }
+
+        public List<Punto> FiltrarPorCuadrante(int selectedIndex)
+        {
+            Cuadrante cuadranteFiltrar=Cuadrante.PrimerCuadrante;
+            switch (selectedIndex)
+            {
+                case 1:
+                    cuadranteFiltrar = Cuadrante.PrimerCuadrante;
+                    break;
+                case 2:
+                    cuadranteFiltrar = Cuadrante.SegundoCuadrante;
+                    break;
+                case 3:
+                    cuadranteFiltrar = Cuadrante.TercerCuadrante;
+                    break;
+                case 4:
+                    cuadranteFiltrar = Cuadrante.CuartoCuadrante;
+                    break;
+            }
+
+            return ListaPuntos
+                .Where(p => p.GetCuadrante() == cuadranteFiltrar)
+                .ToList();
         }
     }
 }

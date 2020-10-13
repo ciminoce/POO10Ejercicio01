@@ -1,4 +1,5 @@
 ﻿using System;
+using POO10Ejercicio01.Entidades.Enums;
 
 namespace POO10Ejercicio01.Entidades
 {
@@ -32,6 +33,30 @@ namespace POO10Ejercicio01.Entidades
         {
             return this.CoordenadaX.GetHashCode()
                    +this.CoordenadaY.GetHashCode();
+        }
+
+        public Cuadrante GetCuadrante()
+        {
+            if (this.CoordenadaX>=0 && this.CoordenadaY>=0)
+            {
+                return Cuadrante.PrimerCuadrante;
+            }else if (this.CoordenadaX<=0 && this.CoordenadaY>=0)
+            {
+                return Cuadrante.SegundoCuadrante;
+            }else if (this.CoordenadaX<=0 && this.CoordenadaY<=0)
+            {
+                return Cuadrante.TercerCuadrante;
+            }
+            else
+            {
+                return Cuadrante.CuartoCuadrante;
+            }
+        }
+
+        public double GetDistanciaAlOrigen()
+        {
+            return Math.Sqrt(Math.Pow(this.CoordenadaX, 2)
+                             + Math.Pow(this.CoordenadaY, 2));
         }
     }
 

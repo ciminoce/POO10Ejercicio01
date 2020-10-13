@@ -17,7 +17,25 @@ namespace POO10Ejercicio01.Windows
         private List<Punto> _lista;
         private void FrmPuntos_Load(object sender, EventArgs e)
         {
+            InicializarComboToolBar();
             _repositorio=new RepositorioDePuntos();
+            CargarDatosEnGrilla();
+        }
+
+        private void InicializarComboToolBar()
+        {
+            //Se agregan items en la colección de items del combo
+            //usando el método Add
+            CuadrantesToolStripComboBox.Items.Add("Seleccione cuadrante");
+            CuadrantesToolStripComboBox.Items.Add("Primer Cuadrante");
+            CuadrantesToolStripComboBox.Items.Add("Segundo Cuadrante");
+            CuadrantesToolStripComboBox.Items.Add("Tercer Cuadrante");
+            CuadrantesToolStripComboBox.Items.Add("Cuarto Cuadrante");
+            CuadrantesToolStripComboBox.SelectedIndex = 0; //Posiciona el comboBox en el primer item
+        }
+
+        private void CargarDatosEnGrilla()
+        {
             _lista = _repositorio.GetLista();
             MostrarDatosEnGrilla();
             MostrarCantidadDeRegistros();
@@ -48,6 +66,8 @@ namespace POO10Ejercicio01.Windows
         {
             r.Cells[colX.Index].Value = punto.CoordenadaX;
             r.Cells[colY.Index].Value = punto.CoordenadaY;
+            r.Cells[colCuadrante.Index].Value = punto.GetCuadrante();
+            r.Cells[colDistancia.Index].Value = punto.GetDistanciaAlOrigen().ToString("N2");
 
             r.Tag = punto;
         }
@@ -159,6 +179,24 @@ namespace POO10Ejercicio01.Windows
             }
 
 
+        }
+
+        private void FiltrarToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (CuadrantesToolStripComboBox.SelectedIndex==0)
+            {
+                return;
+                
+            }
+
+            _lista = _repositorio
+                .FiltrarPorCuadrante(CuadrantesToolStripComboBox.SelectedIndex);
+            MostrarDatosEnGrilla();
+        }
+
+        private void ActualizarToolStripButton_Click(object sender, EventArgs e)
+        {
+            CargarDatosEnGrilla();
         }
     }
 }

@@ -36,6 +36,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.OrdenarToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.FiltrarToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.CuadrantesToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.ActualizarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.SalirToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -43,6 +45,8 @@
             this.PuntosDataGridView = new System.Windows.Forms.DataGridView();
             this.colX = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCuadrante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDistancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InferiorPanel = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CantidadTextBox = new System.Windows.Forms.TextBox();
@@ -62,6 +66,8 @@
             this.toolStripSeparator2,
             this.OrdenarToolStripDropDownButton,
             this.FiltrarToolStripButton,
+            this.toolStripLabel1,
+            this.CuadrantesToolStripComboBox,
             this.ActualizarToolStripButton,
             this.toolStripSeparator1,
             this.SalirToolStripButton});
@@ -128,6 +134,19 @@
             this.FiltrarToolStripButton.Size = new System.Drawing.Size(41, 59);
             this.FiltrarToolStripButton.Text = "Filtrar";
             this.FiltrarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.FiltrarToolStripButton.Click += new System.EventHandler(this.FiltrarToolStripButton_Click);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(88, 59);
+            this.toolStripLabel1.Text = "Nro. Cuadrante";
+            // 
+            // CuadrantesToolStripComboBox
+            // 
+            this.CuadrantesToolStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CuadrantesToolStripComboBox.Name = "CuadrantesToolStripComboBox";
+            this.CuadrantesToolStripComboBox.Size = new System.Drawing.Size(121, 62);
             // 
             // ActualizarToolStripButton
             // 
@@ -138,6 +157,7 @@
             this.ActualizarToolStripButton.Size = new System.Drawing.Size(63, 59);
             this.ActualizarToolStripButton.Text = "Actualizar";
             this.ActualizarToolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ActualizarToolStripButton.Click += new System.EventHandler(this.ActualizarToolStripButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -171,7 +191,9 @@
             this.PuntosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PuntosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colX,
-            this.colY});
+            this.colY,
+            this.colCuadrante,
+            this.colDistancia});
             this.PuntosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PuntosDataGridView.Location = new System.Drawing.Point(0, 0);
             this.PuntosDataGridView.Name = "PuntosDataGridView";
@@ -186,12 +208,27 @@
             this.colX.HeaderText = "X";
             this.colX.Name = "colX";
             this.colX.ReadOnly = true;
+            this.colX.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // colY
             // 
             this.colY.HeaderText = "Y";
             this.colY.Name = "colY";
             this.colY.ReadOnly = true;
+            this.colY.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colCuadrante
+            // 
+            this.colCuadrante.HeaderText = "Cuadrante";
+            this.colCuadrante.Name = "colCuadrante";
+            this.colCuadrante.ReadOnly = true;
+            this.colCuadrante.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colDistancia
+            // 
+            this.colDistancia.HeaderText = "Distancia al Origen";
+            this.colDistancia.Name = "colDistancia";
+            this.colDistancia.ReadOnly = true;
             // 
             // InferiorPanel
             // 
@@ -251,8 +288,6 @@
         private System.Windows.Forms.Panel CuerpoPanel;
         private System.Windows.Forms.DataGridView PuntosDataGridView;
         private System.Windows.Forms.Panel InferiorPanel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colX;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colY;
         private System.Windows.Forms.ToolStripButton SalirToolStripButton;
         private System.Windows.Forms.ToolStripButton NuevoToolStripButton;
         private System.Windows.Forms.ToolStripButton BorrarToolStripButton;
@@ -264,6 +299,12 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox CantidadTextBox;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripComboBox CuadrantesToolStripComboBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCuadrante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDistancia;
     }
 }
 
